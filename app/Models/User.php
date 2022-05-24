@@ -50,11 +50,11 @@ class User extends Authenticatable
 
     public function organization()
     {
-        return $this->belongsTo(Organization::class);
+        return $this->hasOne(Organization::class);
     }
 
     public function donor()
     {
-        return $this->belongsTo(Donor::class);
+        return $this->hasOne(Donor::class);
     }
 }

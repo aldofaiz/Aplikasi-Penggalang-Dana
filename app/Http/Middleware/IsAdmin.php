@@ -24,7 +24,7 @@ class IsAdmin
             return redirect()->route('organization');
         }
         else{
-            return redirect()->route('home');
+            return redirect()->route('beranda');
         }
     }
 }
