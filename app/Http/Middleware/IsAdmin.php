@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
 use Auth;
+use Closure;
 use Illuminate\Http\Request;
 
 class IsAdmin
@@ -20,10 +20,10 @@ class IsAdmin
         if (Auth::user() &&  Auth::user()->role_id == 1) {
             return $next($request);
         }
-        else if (Auth::user() &&  Auth::user()->role_id == 2) {
+        if (Auth::user() &&  Auth::user()->role_id == 2) {
             return redirect()->route('organization');
         }
-        else{
+        if (Auth::user() &&  Auth::user()->role_id == 3) {
             return redirect()->route('beranda');
         }
     }

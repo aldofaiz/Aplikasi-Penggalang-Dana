@@ -6,7 +6,7 @@ use Auth;
 use Closure;
 use Illuminate\Http\Request;
 
-class IsOrganization
+class IsDonor
 {
     /**
      * Handle an incoming request.
@@ -17,14 +17,14 @@ class IsOrganization
      */
     public function handle(Request $request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role_id == 2) {
+        if (Auth::user() &&  Auth::user()->role_id == 3) {
             return $next($request);
         }
         if (Auth::user() &&  Auth::user()->role_id == 1) {
             return redirect()->route('admin');
         }
-        if (Auth::user() &&  Auth::user()->role_id == 3) {
-            return redirect()->route('beranda');
+        if (Auth::user() &&  Auth::user()->role_id == 2) {
+            return redirect()->route('organization');
         }
     }
 }
