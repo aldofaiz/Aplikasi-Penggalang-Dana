@@ -17,7 +17,7 @@ class CreateDonationsTable extends Migration
             $table->id();
             $table->foreignId('donor_id')->references('id')->on('donors')->onDelete('cascade');
             $table->foreignId('program_id')->references('id')->on('programs')->onDelete('cascade');
-            $table->string('donation_type')->nullable();
+            $table->string('donation_code');
             $table->decimal('amount', 20, 2)->nullable()->default(0);
             $table->string('note')->nullable();
             $table->string('snap_token')->nullable();

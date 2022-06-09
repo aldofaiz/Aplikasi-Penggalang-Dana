@@ -16,8 +16,9 @@ class CreateOrganizationsTable extends Migration
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('organization_name');
-            $table->string('PIC');
+            $table->string('organization_name')->nullable();
+            $table->string('organization_logo')->nullable();
+            $table->string('PIC')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('rekening_number')->nullable();
             $table->string('rekening_name')->nullable();

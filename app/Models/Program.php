@@ -25,4 +25,20 @@ class Program extends Model
     {
         return $this->hasMany(Donation::class);
     }
+
+    public function setStatusWithdrawSubmission()
+    {
+        $this->attributes['program_withdraw_status'] = 'submission';
+        self::save();
+    }
+    public function setStatusWithdrawApproved()
+    {
+        $this->attributes['program_withdraw_status'] = 'approved';
+        self::save();
+    }
+    public function setStatusWithdrawFinished()
+    {
+        $this->attributes['program_withdraw_status'] = 'finished';
+        self::save();
+    }
 }
