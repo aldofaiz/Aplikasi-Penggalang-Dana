@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function () {
-            DB::table('programs')->whereRaw('program_deadline > now()')->update(['program_status' => "finished"]);
+            DB::table('programs')->whereRaw('program_deadline < now()')->update(['program_status' => "finished"]);
         })->daily();
     }
 
