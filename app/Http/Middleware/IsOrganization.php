@@ -24,7 +24,7 @@ class IsOrganization
             return redirect()->route('admin');
         }
         if (Auth::user() &&  Auth::user()->role_id == 3) {
-            return redirect()->route('beranda');
+            return redirect()->route('home');
         }
     }
 }
