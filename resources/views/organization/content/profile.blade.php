@@ -19,9 +19,8 @@
 @section('content')
 <div class="container-fluid">
   <div class="row">
-    <div class="col-md-3">
-
-      <div class="card card-primary card-outline">
+    <div class="col-md-3">           
+      <div class="card card-primary card-outline">        
         <div class="card-body box-profile">  
           <div class="text-center">
             <img class="img-fluid" src="{{ asset('storage/'.$organization->organization_logo) }}" alt="Organization Logo" width="100">
@@ -55,6 +54,7 @@
     </div>
   
     <div class="col-md-9">
+      @include('component.alert')
       <div class="card">
         <div class="card-header p-2">
           <ul class="nav nav-pills">

@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Organization;
 use App\Models\Program;
+use Path\To\DOMDocument;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class ProgramOrganizationController extends Controller
 {
@@ -39,6 +41,33 @@ class ProgramOrganizationController extends Controller
             'program_status' => 'required',
         ]);
         
+        /*
+        $storage = "storage/description";
+        $dom = new \DOMDocument();
+        libxml_use_internal_errors(true);
+        $dom->loadHTML($request->program_description,LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        libxml_clear_errors();
+        $images=$dom->getElementsByTagName('img');
+        foreach($images as $img){
+            $src = $img->getAttribute('src');
+            if(preg_match('/data:image/', $src)){
+                preg_match('/data:image\/(?<mime>.*?)\;/', $src, $groups);
+                $mimetype = $groups['mime'];
+                $fileNameDescription = uniqid();
+                $fileNameDescriptionRand = substr(md5($fileNameDescription),6,6).'_'.time();
+                $filepath = ("$storage/$fileNameDescriptionRand.$mimetype");
+                $image = Image::make($src)
+                    ->resize(1200,1200)
+                    ->encode($mimetype,100)
+                    ->save(public_path($filepath));
+                $new_src = asset($filepath);
+                $img->removeAttribute('src');
+                $img->setAttribute('src', $new_src);
+                $img->setAttribute('class', 'img-responsive');
+            }
+        }
+        */
+
         $fileNamePoster = $request->organization_id.$request->category_id.time().'.'.$request->program_poster->extension();
         $poster = $request->file('program_poster')->storeAs('poster',$fileNamePoster);
         
@@ -51,6 +80,7 @@ class ProgramOrganizationController extends Controller
             'program_title' => $request->program_title,
             'program_poster' => $poster,
             'program_description' => $request->program_description,
+            //'program_description' => $dom->saveHTML(),
             'program_deadline' => $request->program_deadline,
             'program_target_funds' => $request->program_target_funds,
             'program_proposal_file' => $proposal,

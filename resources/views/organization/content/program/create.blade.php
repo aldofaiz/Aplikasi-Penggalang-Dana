@@ -116,7 +116,15 @@
         // Summernote
         $('#summernote').summernote({
             placeholder: 'Deskripsi Program...',
-            height: 300
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'video']],
+            ]
         });
     })
 </script>

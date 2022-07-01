@@ -65,7 +65,13 @@
                 <tr>
                     <th>Target Dana</th>
                     <td>
-                        {{ $program->program_target_funds }}
+                        @currency($program->program_target_funds)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Dana Terkumpul</th>
+                    <td>
+                        @currency($program->donations->where('donation_status', 'success')->sum('amount'))
                     </td>
                 </tr>
                 <tr>
