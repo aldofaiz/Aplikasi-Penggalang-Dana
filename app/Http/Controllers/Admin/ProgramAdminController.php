@@ -24,7 +24,8 @@ class ProgramAdminController extends Controller
     public function show(Program $program)
     {
         $category = $program->category;
-        return view('admin.content.program.show',compact('program','category'));
+        $organization = $program->organization;
+        return view('admin.content.program.show',compact('program','category','organization'));
     }
 
     public function edit(Program $program)

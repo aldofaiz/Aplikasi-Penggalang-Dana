@@ -87,13 +87,18 @@
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
                     </div>
+                    
                     <div class="form-group">
                         <label>Status</label>
+                        @if($program->program_status != "finished")
                         <select name="program_status" class="form-control custom-select">
                             <option value="draft" {{ ( $program->program_status == "draft") ? 'selected' : '' }}>Draft</option>
                             <option value="published" {{ ( $program->program_status == "published") ? 'selected' : '' }}>Publish</option>
                         </select>
-                    </div>                           
+                        @else
+                        <input type="text" name="program_status" value="{{ $program->program_status }}" class="form-control" readonly>
+                        @endif 
+                    </div>                                       
                 </div>            
             </div>
             <div class="row">
@@ -123,7 +128,15 @@
         // Summernote
         $('#summernote').summernote({
             placeholder: 'Deskripsi Program...',
-            height: 300
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'video']],
+            ]
         });
     })
 </script>

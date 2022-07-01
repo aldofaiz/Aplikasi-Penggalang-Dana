@@ -39,6 +39,14 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>Organisasi</th>
+                    <td>
+                        <a href="{{ route('admin.organization.show',$organization->id) }}">
+                            {{ $organization->organization_name }}
+                        </a>
+                    </td>
+                </tr>
+                <tr>
                     <th>Kategori</th>
                     <td>
                         {{ $category->category_name }}
@@ -65,7 +73,13 @@
                 <tr>
                     <th>Target Dana</th>
                     <td>
-                        {{ $program->program_target_funds }}
+                        @currency($program->program_target_funds)
+                    </td>
+                </tr>
+                <tr>
+                    <th>Dana Terkumpul</th>
+                    <td>
+                        @currency($program->donations->where('donation_status', 'success')->sum('amount'))
                     </td>
                 </tr>
                 <tr>
