@@ -20,6 +20,7 @@ class CreateDonationsTable extends Migration
             $table->string('donation_code');
             $table->decimal('amount', 20, 2)->nullable()->default(0);
             $table->string('note')->nullable();
+            $table->integer('alias')->nullable()->default(0);
             $table->string('snap_token')->nullable();
             $table->enum('donation_status', ['pending','success','failed','expired'])->default('pending');
             $table->timestamps();
