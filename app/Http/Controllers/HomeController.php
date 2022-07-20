@@ -8,7 +8,7 @@ use App\Models\Program;
 use App\Models\Donor;
 use App\Models\Donation;
 use App\Models\User;
-use App\Models\organization;
+use App\Models\Organization;
 
 class HomeController extends Controller
 {

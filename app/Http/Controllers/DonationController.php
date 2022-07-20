@@ -43,6 +43,7 @@ class DonationController extends Controller
                 'donation_code' => 'SANDBOX-' . uniqid(),
                 'amount' => floatval($request->amount),
                 'note' => $request->note,
+                'alias' => $request->alias,
             ]);
 
             $program = $donation->program;

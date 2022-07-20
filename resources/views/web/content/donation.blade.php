@@ -34,6 +34,20 @@
                   </div>
                 </div>
               </div>
+              <div class="row mb-3">
+                <div class="col-12">                  
+                  <div class="d-flex justify-content-between mb-0">
+                      <div class="form-outline">
+                        <input type="radio" class="alias" name="alias" value="0" checked>
+                        <label>Donasi sebagai nama Anda</label>
+                      </div>
+                      <div class="form-outline">
+                        <input type="radio" class="alias" name="alias" value="1">
+                        <label>Donasi sebagai Anonim</label>  
+                      </div>  
+                  </div>
+                </div>
+              </div>
               <button class="btn btn-primary" type="submit">Kirim</button>
               </form>
             </div>
@@ -67,6 +81,7 @@ data-client-key="{{ config('services.midtrans.clientKey') }}">
           program_id: $('input#program_id').val(),
           amount: $('input#amount').val(),
           note: $('textarea#note').val(),
+          alias: $('.alias:checked').val(),
       },
       function (data, status) {
           console.log(data);

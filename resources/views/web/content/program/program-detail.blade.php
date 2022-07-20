@@ -87,7 +87,12 @@
                         <td>#</td>
                         <td>
                             <a>
-                              @currency($donation->amount) - {{ $donation->donor->user->name }}
+                              @currency($donation->amount) - 
+                              @if ($donation->alias == 0)
+                                {{ $donation->donor->user->name }}
+                              @else
+                                Anonim
+                              @endif
                             </a>
                             <br />
                             <small>
